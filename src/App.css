@@ -1,0 +1,16 @@
+@import "tailwindcss";
+
+.animate-color-flow {
+    background: linear-gradient(to top, #22c55e 0%, #3b82f6 100%);
+    background-size: 100% 200%;
+    animation: color-flow 2s ease-out forwards;
+  }
+  
+  @keyframes color-flow {
+    0% {
+      background-position: 0% 100%;
+    }
+    100% {
+      background-position: 0% 0%;
+    }
+  }
