@@ -1,7 +1,6 @@
 import React from 'react';
 import { GraduationCap, Building2 } from 'lucide-react';
-
-export default const Education = () => {
+const  Education = () => {
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-16 px-4">
       <div className="max-w-4xl mx-auto">
@@ -59,3 +58,5 @@ export default const Education = () => {
     </div>
   );
 };
+
+export default Education;
