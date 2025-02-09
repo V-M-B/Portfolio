@@ -1,21 +1,21 @@
 import React, { useState, useEffect } from "react";
-import { Menu, X } from "lucide-react";
+import { Menu, X, Moon, Sun } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import { useTheme } from '../context/Themecontext';
 
 export default function Header() {
+  const { darkMode, toggleDarkMode } = useTheme();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [activeSection, setActiveSection] = useState("home");
 
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
-  // Function to handle smooth scrolling
   const scrollToSection = (id) => {
     document.getElementById(id).scrollIntoView({ behavior: "smooth" });
     setActiveSection(id);
-    setIsMenuOpen(false); // Close mobile menu after clicking
+    setIsMenuOpen(false);
   };
 
-  // Intersection Observer for active section highlighting
   useEffect(() => {
     const sections = document.querySelectorAll("section");
     const options = { root: null, threshold: 0.6 };
@@ -34,33 +34,69 @@ export default function Header() {
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-white shadow-md z-50">
+    <header className="fixed top-0 left-0 w-full bg-white dark:bg-black shadow-md z-50 transition-colors duration-300 border-b-4 border-blue-700 dark:border-blue-700">
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
-        <button onClick={() => scrollToSection("home")} className="text-2xl font-bold">
+        <button onClick={() => scrollToSection("home")} className="text-2xl font-bold dark:text-white">
           VMB
         </button>
 
         {/* Desktop Menu */}
-        <ul className="hidden md:flex space-x-6">
-          {["home", "about", "projects", "education", "contact"].map((section) => (
-            <li key={section}>
-              <button
-                onClick={() => scrollToSection(section)}
-                className={`hover:text-blue-600 transition-colors ${
-                  activeSection === section ? "text-blue-600 font-bold" : ""
-                }`}
-              >
-                {section.charAt(0).toUpperCase() + section.slice(1)}
-              </button>
-            </li>
-          ))}
-        </ul>
+        <div className="hidden md:flex items-center space-x-6">
+          <ul className="flex space-x-6">
+            {["home", "about", "projects", "education", "contact"].map((section) => (
+              <li key={section}>
+                <button
+                  onClick={() => scrollToSection(section)}
+                  className={`hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
+                    activeSection === section 
+                      ? "text-blue-600 dark:text-blue-400 font-bold" 
+                      : "dark:text-white"
+                  }`}
+                >
+                  {section.charAt(0).toUpperCase() + section.slice(1)}
+                </button>
+              </li>
+            ))}
+          </ul>
+
+          {/* Theme Toggle Button */}
+          <button
+            onClick={toggleDarkMode}
+            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-300"
+            aria-label="Toggle theme"
+          >
+            {darkMode ? (
+              <Sun className="w-5 h-5 text-yellow-500" />
+            ) : (
+              <Moon className="w-5 h-5 text-gray-700" />
+            )}
+          </button>
+        </div>
 
         {/* Mobile Menu Button */}
-        <button onClick={toggleMenu} className="md:hidden p-2">
-          {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        <div className="md:hidden flex items-center space-x-4">
+          {/* Theme Toggle Button (Mobile) */}
+          <button
+            onClick={toggleDarkMode}
+            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-300"
+            aria-label="Toggle theme"
+          >
+            {darkMode ? (
+              <Sun className="w-5 h-5 text-yellow-500" />
+            ) : (
+              <Moon className="w-5 h-5 text-gray-700" />
+            )}
+          </button>
+
+          <button onClick={toggleMenu} className="p-2">
+            {isMenuOpen ? (
+              <X className="w-6 h-6 dark:text-white" />
+            ) : (
+              <Menu className="w-6 h-6 dark:text-white" />
+            )}
+          </button>
+        </div>
       </nav>
 
       {/* Mobile Menu */}
@@ -71,7 +107,7 @@ export default function Header() {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3 }}
-            className="md:hidden bg-white shadow-md p-4"
+            className="md:hidden bg-white dark:bg-gray-900 shadow-md p-4"
           >
             <ul className="space-y-4 text-center">
               {["home", "about", "projects", "education", "contact"].map((section) => (
@@ -79,7 +115,9 @@ export default function Header() {
                   <button
                     onClick={() => scrollToSection(section)}
                     className={`block w-full py-2 ${
-                      activeSection === section ? "text-blue-600 font-bold" : ""
+                      activeSection === section 
+                        ? "text-blue-600 dark:text-blue-400 font-bold" 
+                        : "dark:text-white"
                     }`}
                   >
                     {section.charAt(0).toUpperCase() + section.slice(1)}
