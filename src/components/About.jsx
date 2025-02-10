@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../context/Themecontext';
 
 export default function About() {
   const { darkMode } = useTheme();
@@ -23,7 +23,7 @@ export default function About() {
               </div>
             </div>
             {/* Content Card */}
-            <div className="flex-1rounded-3xl p-8 relative">
+            <div className=" bg-white dark:bg-indigo-900 text-white flex-1rounded-3xl p-8 relative">
             <div className="flex-1rounded-3xl p-8 relative">
               {/* Triangle pointer for desktop */}
               <div className="hidden md:block absolute left-0 top-8 transform -translate-x-4">

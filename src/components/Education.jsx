@@ -1,10 +1,12 @@
 import React from 'react';
 import { GraduationCap, Building2 } from 'lucide-react';
+import { useTheme } from '../context/Themecontext';
 const  Education = () => {
+  const { darkMode } = useTheme();
   return (
-    <div className="min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 py-16 px-4">
+    <div className="min-h-screen bg-white dark:bg-black text-white py-16 px-4 ">
       <div className="max-w-4xl mx-auto">
-        <h1 className="text-3xl font-bold text-center text-gray-800 mb-12">
+        <h1 className="text-3xl font-bold text-center text-white mb-12">
           Education Timeline
         </h1>
         

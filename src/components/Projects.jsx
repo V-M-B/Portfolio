@@ -70,9 +70,9 @@ const ProjectCard = ({ project }) => (
 );
 
 const App = () => (
-  <div className="min-h-screen bg-gray-100 py-16 px-4">
+  <div className="min-h-screen bg-white dark:bg-black text-white py-16 px-4">
     <div className="max-w-6xl mx-auto">
-      <h1 className="text-4xl font-bold text-gray-900 mb-12 text-center">
+      <h1 className="text-4xl font-bold text-whie mb-12 text-center">
         Featured Projects
       </h1>
       
