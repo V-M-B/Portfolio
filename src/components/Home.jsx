@@ -1,5 +1,5 @@
 import React from 'react';
-import { useTheme } from '../context/Themecontext';
+import { useTheme } from '../context/ThemeContext';
 import {
   Github,
   Hexagon,
@@ -13,7 +13,7 @@ import {
 } from 'lucide-react';
 
 function Home() {
-  const { darkMode } = useTheme(); // Only need this line for theme access
+  const { darkMode } = useTheme(); // Access the darkMode state
 
   // Animated shapes data with different shapes and colors
   const shapes = Array(15)
@@ -22,7 +22,6 @@ function Home() {
       const shapeTypes = [Hexagon, Circle, Triangle, Square];
       const colors = ['#EF4444', '#F59E0B', '#10B981', '#3B82F6'];
       const sizes = ['w-6 h-6', 'w-8 h-8', 'w-12 h-12', 'w-16 h-16'];
-
       return {
         id: i,
         ShapeComponent: shapeTypes[Math.floor(Math.random() * shapeTypes.length)],
@@ -38,7 +37,11 @@ function Home() {
     });
 
   return (
-    <div className="min-h-screen relative overflow-hidden pt-1 bg-white dark:bg-black transition-colors duration-300">
+    <div
+      className={`min-h-screen relative overflow-hidden pt-1 transition-colors duration-300 ${
+        darkMode ? 'bg-black' : 'bg-white'
+      }`}
+    >
       {/* Animated background shapes */}
       {shapes.map((shape) => (
         <div
@@ -64,10 +67,12 @@ function Home() {
               className="w-full h-full object-cover rounded-full"
             />
           </div>
-          <h1 className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-500 to-green-500 text-transparent bg-clip-text">
+          <h1
+            className="text-4xl font-bold mb-2 bg-gradient-to-r from-blue-500 to-green-500 text-transparent bg-clip-text"
+          >
             Varun M Bharadwaj
           </h1>
-          <p className="text-xl text-gray-600 dark:text-gray-400 mb-8">
+          <p className={`text-xl ${darkMode ? 'text-gray-400' : 'text-gray-600'} mb-8`}>
             I'm a Software Engineer
           </p>
 
@@ -84,7 +89,9 @@ function Home() {
               <a
                 key={index}
                 href={social.href}
-                className="text-gray-600 dark:text-gray-400 hover:text-blue-500 transition-colors duration-300"
+                className={`${
+                  darkMode ? 'text-gray-400' : 'text-gray-600'
+                } hover:text-blue-500 transition-colors duration-300`}
               >
                 <social.icon className="w-6 h-6" />
               </a>
@@ -92,17 +99,25 @@ function Home() {
           </div>
 
           {/* Contact button */}
-          <button className="bg-gradient-to-r from-blue-500 to-green-500 text-white px-8 py-3 rounded-full font-semibold hover:opacity-90 transition-opacity duration-300 shadow-lg">
+          <button
+            className="bg-gradient-to-r from-blue-500 to-green-500 text-white px-8 py-3 rounded-full font-semibold hover:opacity-90 transition-opacity duration-300 shadow-lg"
+          >
             Contact Me
           </button>
         </div>
 
         {/* Scroll indicator */}
         <div className="absolute bottom-20 left-1/2 transform -translate-x-1/2 text-center">
-          <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">
+          <p
+            className={`text-sm ${darkMode ? 'text-gray-400' : 'text-gray-600'} mb-2`}
+          >
             Scroll Down
           </p>
-          <div className="w-6 h-10 border-2 border-gray-300 dark:border-gray-700 rounded-full mx-auto relative overflow-hidden">
+          <div
+            className={`w-6 h-10 border-2 ${
+              darkMode ? 'border-gray-700' : 'border-gray-300'
+            } rounded-full mx-auto relative overflow-hidden`}
+          >
             <div className="absolute inset-0 bg-gradient-to-b from-blue-500 via-green-500 to-yellow-500 opacity-30"></div>
             <div className="w-1.5 h-1.5 bg-gradient-to-r from-blue-500 to-green-500 rounded-full absolute left-1/2 top-2 transform -translate-x-1/2 animate-scroll-bounce"></div>
           </div>

@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from '../context/Themecontext';
+import { useTheme } from '../context/ThemeContext';
 
 export default function Header() {
   const { darkMode, toggleDarkMode } = useTheme();
@@ -19,7 +19,6 @@ export default function Header() {
   useEffect(() => {
     const sections = document.querySelectorAll("section");
     const options = { root: null, threshold: 0.6 };
-
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
         if (entry.isIntersecting) {
@@ -29,15 +28,21 @@ export default function Header() {
     }, options);
 
     sections.forEach((section) => observer.observe(section));
-
     return () => observer.disconnect();
   }, []);
 
   return (
-    <header className="fixed top-0 left-0 w-full bg-white dark:bg-black shadow-md z-50 transition-colors duration-300 border-b-4 border-blue-700 dark:border-blue-700">
+    <header
+      className={`fixed top-0 left-0 w-full shadow-md z-50 transition-colors duration-300 border-b-4 ${
+        darkMode ? 'border-blue-700 bg-black' : 'border-blue-700 bg-white'
+      }`}
+    >
       <nav className="container mx-auto px-4 py-4 flex justify-between items-center">
         {/* Logo */}
-        <button onClick={() => scrollToSection("home")} className="text-2xl font-bold dark:text-white">
+        <button
+          onClick={() => scrollToSection("home")}
+          className={`text-2xl font-bold ${darkMode ? 'text-white' : 'text-black'}`}
+        >
           VMB
         </button>
 
@@ -49,9 +54,9 @@ export default function Header() {
                 <button
                   onClick={() => scrollToSection(section)}
                   className={`hover:text-blue-600 dark:hover:text-blue-400 transition-colors ${
-                    activeSection === section 
-                      ? "text-blue-600 dark:text-blue-400 font-bold" 
-                      : "dark:text-white"
+                    activeSection === section
+                      ? "text-blue-600 dark:text-blue-400 font-bold"
+                      : `${darkMode ? 'text-white' : 'text-black'}`
                   }`}
                 >
                   {section.charAt(0).toUpperCase() + section.slice(1)}
@@ -64,7 +69,6 @@ export default function Header() {
           <button
             onClick={toggleDarkMode}
             className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-300"
-            aria-label="Toggle theme"
           >
             {darkMode ? (
               <Sun className="w-5 h-5 text-yellow-500" />
@@ -80,7 +84,6 @@ export default function Header() {
           <button
             onClick={toggleDarkMode}
             className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-300"
-            aria-label="Toggle theme"
           >
             {darkMode ? (
               <Sun className="w-5 h-5 text-yellow-500" />
@@ -88,7 +91,6 @@ export default function Header() {
               <Moon className="w-5 h-5 text-gray-700" />
             )}
           </button>
-
           <button onClick={toggleMenu} className="p-2">
             {isMenuOpen ? (
               <X className="w-6 h-6 dark:text-white" />
@@ -115,8 +117,8 @@ export default function Header() {
                   <button
                     onClick={() => scrollToSection(section)}
                     className={`block w-full py-2 ${
-                      activeSection === section 
-                        ? "text-blue-600 dark:text-blue-400 font-bold" 
+                      activeSection === section
+                        ? "text-blue-600 dark:text-blue-400 font-bold"
                         : "dark:text-white"
                     }`}
                   >

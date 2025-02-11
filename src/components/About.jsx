@@ -1,10 +1,12 @@
 import React from 'react';
-import { useTheme } from '../context/Themecontext';
+import { useTheme } from '../context/ThemeContext';
 
 export default function About() {
   const { darkMode } = useTheme();
   return (
-    <div className="min-h-screen  p-8 md:p-16 bg-white dark:bg-black font-white">
+    <div className={`min-h-screen  p-8 md:p-16 ${
+        darkMode ? 'bg-black' : 'bg-white'
+      }`}>
       <div className="max-w-6xl mx-auto">
         <h1 className="text-4xl font-bold mb-12 ">About Me</h1>
         <div className="relative">
