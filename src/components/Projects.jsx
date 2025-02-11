@@ -1,6 +1,6 @@
 import React from 'react';
 import { Github, Link2 } from 'lucide-react';
-import { useTheme } from '../context/ThemeContext'; // Ensure correct file name
+import { useTheme } from '../context/Themecontext'; // Ensure correct file name
 
 const projects = [
   {

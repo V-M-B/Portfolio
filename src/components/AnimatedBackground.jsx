@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { useTheme } from '../context/ThemeContext'; // Ensure correct file name
+import { useTheme } from '../context/Themecontext'; // Ensure correct file name
 
 const shapes = Array(15)
   .fill(null)

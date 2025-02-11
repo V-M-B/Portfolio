@@ -1,6 +1,6 @@
 import React from 'react';
 import { GraduationCap, Building2 } from 'lucide-react';
-import { useTheme } from '../context/ThemeContext'; 
+import { useTheme } from '../context/Themecontext'; 
 
 const Education = () => {
   const { darkMode } = useTheme();

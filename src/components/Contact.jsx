@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Send, Mail, Github, Linkedin } from "lucide-react";
 import emailjs from "emailjs-com";
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../context/Themecontext';
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",

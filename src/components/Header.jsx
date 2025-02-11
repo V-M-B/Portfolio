@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from '../context/ThemeContext';
+import { useTheme } from '../context/Themecontext';
 
 export default function Header() {
   const { darkMode, toggleDarkMode } = useTheme();

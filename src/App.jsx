@@ -5,7 +5,7 @@ import About from "./components/About";
 import Projects from "./components/Projects";
 import Education from "./components/Education";
 import Contact from "./components/Contact";
-import { ThemeProvider } from './context/ThemeContext'; 
+import { ThemeProvider } from './context/Themecontext'; 
 
 function App() {
   return (
