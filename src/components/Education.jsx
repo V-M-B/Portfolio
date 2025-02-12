@@ -1,15 +1,17 @@
 import React from 'react';
 import { GraduationCap, Building2 } from 'lucide-react';
 import { useTheme } from '../context/Themecontext'; 
+import AnimatedBackground from './AnimatedBackground';
 
 const Education = () => {
   const { darkMode } = useTheme();
 
   return (
+    <AnimatedBackground>
     <div className={`min-h-screen ${darkMode ? 'bg-black' : 'bg-white'} text-white py-16 px-4`}>
       <div className="max-w-4xl mx-auto">
         <h1 className="text-3xl font-bold text-center mb-12">
-          Education Timeline
+          Education 
         </h1>
         
         <div className="relative">
@@ -31,10 +33,10 @@ const Education = () => {
               <div className={`bg-${darkMode ? 'black' : 'white'} p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ${darkMode ? 'border border-gray-600' : ''}`}>
                 <div className="flex items-center mb-4">
                   <GraduationCap className={`w-6 h-6 ${darkMode ? 'text-green-400' : 'text-green-600'} mr-2`} />
-                  <h3 className={`text-xl font-semibold ${darkMode ? 'text-gray-300' : 'text-gray-800'}`}>MIT</h3>
+                  <h3 className={`text-xl font-semibold ${darkMode ? 'text-gray-300' : 'text-gray-800'}`}>JSS Academy of Technical Education</h3>
                 </div>
-                <p className={`text-${darkMode ? 'green-400' : 'green-600'} font-medium mb-2`}>Bachelor of Engineering</p>
-                <p className={`${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>Class of 2019</p>
+                <p className={`text-${darkMode ? 'green-400' : 'green-600'} font-medium mb-2`}>Master of Computer Application (MCA)</p>
+                <p className={`${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>Class of 2024</p>
               </div>
               {/* Timeline Dot */}
               <div className={`absolute right-0 top-1/2 transform translate-x-4 -translate-y-1/2 w-4 h-4 ${darkMode ? 'bg-green-400' : 'bg-green-600'} rounded-full border-4 border-white animate-pulse`}></div>
@@ -46,10 +48,10 @@ const Education = () => {
               <div className={`bg-${darkMode ? 'black' : 'white'} p-6 rounded-lg shadow-lg hover:shadow-xl transition-shadow duration-300 ${darkMode ? 'border border-gray-600' : ''}`}>
                 <div className="flex items-center mb-4">
                   <Building2 className={`w-6 h-6 ${darkMode ? 'text-green-400' : 'text-green-600'} mr-2`} />
-                  <h3 className={`text-xl font-semibold ${darkMode ? 'text-gray-300' : 'text-gray-800'}`}>Harvard University</h3>
+                  <h3 className={`text-xl font-semibold ${darkMode ? 'text-gray-300' : 'text-gray-800'}`}>KLE Society’s Degree College</h3>
                 </div>
-                <p className={`text-${darkMode ? 'green-400' : 'green-600'} font-medium mb-2`}>Master of Science</p>
-                <p className={`${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>Class of 2021</p>
+                <p className={`text-${darkMode ? 'green-400' : 'green-600'} font-medium mb-2`}>Bachelor of Computer Application (BCA)</p>
+                <p className={`${darkMode ? 'text-gray-400' : 'text-gray-600'}`}>Class of 2022</p>
               </div>
               {/* Timeline Dot */}
               <div className={`absolute left-0 top-1/2 transform -translate-x-4 -translate-y-1/2 w-4 h-4 ${darkMode ? 'bg-green-400' : 'bg-green-600'} rounded-full border-4 border-white animate-pulse`}></div>
@@ -58,6 +60,7 @@ const Education = () => {
         </div>
       </div>
     </div>
+    </AnimatedBackground>
   );
 };
 

@@ -1,33 +1,34 @@
 import React from 'react';
 import { Github, Link2 } from 'lucide-react';
 import { useTheme } from '../context/Themecontext'; // Ensure correct file name
+import AnimatedBackground from './AnimatedBackground';
 
 const projects = [
   {
-    title: "React Native Jobs App",
-    category: "Frontend, React",
-    image: "https://images.unsplash.com/photo-1551650975-87deedd944c3?auto=format&fit=crop&q=80&w=1974",
-    links: {
-      github: "https://github.com",
-      live: "https://demo.com",
-    },
-  },
-  {
-    title: "Crypto Dashboard",
-    category: "Web App",
-    image: "https://images.unsplash.com/photo-1639762681485-074b7f938ba0?auto=format&fit=crop&q=80&w=2032",
-    links: {
-      github: "https://github.com",
-      live: "https://demo.com",
-    },
-  },
-  {
-    title: "Food Delivery App",
+    title: "URL Shortner",
     category: "Full Stack",
-    image: "https://images.unsplash.com/photo-1565299624946-b28f40a0ae38?auto=format&fit=crop&q=80&w=1981",
+    image: "/projectt.png",
     links: {
-      github: "https://github.com",
-      live: "https://demo.com",
+      github: "https://github.com/V-M-B/Custom-URL-Shortener",
+      live: "https://trimmer-pi.vercel.app/",
+    },
+  },
+  {
+    title: "Portfolio",
+    category: "Frontend, React",
+    image: "/projectp.png",
+    links: {
+      github: "https://github.com/V-M-B/Portfolio",
+      live: "https://vmb-portfolio.netlify.app/",
+    },
+  },
+  {
+    title: "Job Portal",
+    category: "Full Stack",
+    image: "/projectj.png",
+    links: {
+      github: "https://github.com/V-M-B/Job-Portal",
+      live: "https://job-portaal-ten.vercel.app/",
     },
   },
 ];
@@ -47,7 +48,7 @@ const ProjectCard = ({ project }) => {
       {/* Hover Overlay */}
       <div className={`absolute inset-0 ${darkMode ? 'bg-gray-800/90' : 'bg-blue-600/90'} flex flex-col justify-center items-center opacity-0 group-hover:opacity-100 transition-opacity duration-300`}>
         <div className={`text-${darkMode ? 'gray-300' : 'white'} text-center p-6`}>
-          <h3 className="text-2xl font-bold mb-2">{project.title}</h3>
+          <h1 className="text-2xl font-bold mb-2">{project.title}</h1>
           <p className={`text-${darkMode ? 'gray-400' : 'blue-100'} mb-6`}>{project.category}</p>
           
           <div className="flex gap-4 justify-center">
@@ -78,9 +79,10 @@ const App = () => {
   const { darkMode } = useTheme();
 
   return (
+    <AnimatedBackground>
     <div className={`min-h-screen ${darkMode ? 'bg-black' : 'bg-white'} text-white py-16 px-4`}>
       <div className="max-w-6xl mx-auto">
-        <h1 className={`${darkMode ? 'text-white' : 'text-black '}text-4xl font-bold text-center mb-12`}>
+        <h1 className={`${darkMode ? 'text-white' : 'text-black '} text-4xl font-bold text-center mb-12`}>
           Featured Projects
         </h1>
         
@@ -91,6 +93,7 @@ const App = () => {
         </div>
       </div>
     </div>
+    </AnimatedBackground>
   );
 };
 

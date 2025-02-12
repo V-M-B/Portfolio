@@ -1,11 +1,12 @@
-
+// src/components/AnimatedBackground.jsx
 import React from 'react';
-import { useTheme } from '../context/Themecontext'; // Ensure correct file name
+import { Circle, Square, Triangle, Hexagon } from 'lucide-react'; // Ensure correct import
+import { useTheme } from '../context/Themecontext';
 
 const shapes = Array(15)
   .fill(null)
   .map((_, i) => {
-    const shapeTypes = ['Hexagon', 'Circle', 'Triangle', 'Square'];
+    const shapeTypes = [Hexagon, Circle, Triangle, Square];
     const colors = ['#EF4444', '#F59E0B', '#10B981', '#3B82F6'];
     const sizes = ['w-6 h-6', 'w-8 h-8', 'w-12 h-12', 'w-16 h-16'];
     return {
@@ -22,11 +23,11 @@ const shapes = Array(15)
     };
   });
 
-const AnimatedBackground = () => {
+const AnimatedBackground = ({ children }) => {
   const { darkMode } = useTheme(); // Access the darkMode state
 
   return (
-    <div className={`min-h-screen relative overflow-hidden ${darkMode ? 'bg-black' : 'bg-white'} transition-colors duration-300`}>
+    <div className={`min-h-screen ${darkMode ? 'bg-black' : 'bg-white'} relative overflow-hidden`}>
       {/* Animated background shapes */}
       {shapes.map((shape) => (
         <div
@@ -40,6 +41,7 @@ const AnimatedBackground = () => {
           />
         </div>
       ))}
+      {children} {/* Render the children passed to the component */}
     </div>
   );
 };

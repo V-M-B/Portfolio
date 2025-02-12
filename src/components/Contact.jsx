@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { Send, Mail, Github, Linkedin } from "lucide-react";
 import emailjs from "emailjs-com";
 import { useTheme } from '../context/Themecontext';
+import AnimatedBackground from './AnimatedBackground';
+
 const Contact = () => {
   const [formData, setFormData] = useState({
     name: "",
@@ -29,7 +31,7 @@ const Contact = () => {
   const { darkMode } = useTheme(); // Access the darkMode state
 
   return (
-    
+    <AnimatedBackground>
     <div className={`min-h-screen ${darkMode ? 'bg-black' : 'bg-white'} relative overflow-hidden`}>
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-gray-900 via-black to-black"></div>
       <div className="container mx-auto px-4 py-16 relative z-10">
@@ -82,7 +84,7 @@ const Contact = () => {
         </div>
       </div>
     </div>
-    
+    </AnimatedBackground>
   );
 };
 

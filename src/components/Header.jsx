@@ -1,7 +1,8 @@
+// src/components/Header.jsx
 import React, { useState, useEffect } from "react";
 import { Menu, X, Moon, Sun } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
-import { useTheme } from '../context/Themecontext';
+import { useTheme } from '../context/Themecontext'; // Ensure correct file name
 
 export default function Header() {
   const { darkMode, toggleDarkMode } = useTheme();
@@ -68,13 +69,51 @@ export default function Header() {
           {/* Theme Toggle Button */}
           <button
             onClick={toggleDarkMode}
-            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-300"
+            className={`relative w-20 h-10 rounded-full p-1 transition-colors duration-500 ${
+              darkMode ? 'bg-gray-700' : 'bg-blue-300'
+            }`}
           >
-            {darkMode ? (
-              <Sun className="w-5 h-5 text-yellow-500" />
-            ) : (
-              <Moon className="w-5 h-5 text-gray-700" />
-            )}
+            {/* Background Elements */}
+            <div className="absolute inset-0 rounded-full overflow-hidden">
+              {/* Stars */}
+              <div className={`absolute inset-0 transition-opacity duration-500 ${darkMode ? 'opacity-100' : 'opacity-0'}`}>
+                <div className="absolute h-1 w-1 bg-white rounded-full top-3 left-4" />
+                <div className="absolute h-1 w-1 bg-white rounded-full top-6 left-8" />
+                <div className="absolute h-1 w-1 bg-white rounded-full top-4 left-12" />
+              </div>
+              {/* Clouds */}
+              <div className={`absolute inset-0 transition-opacity duration-500 ${darkMode ? 'opacity-0' : 'opacity-100'}`}>
+                <div className="absolute h-3 w-8 bg-white rounded-full top-2 left-8 opacity-80" />
+                <div className="absolute h-3 w-6 bg-white rounded-full top-4 left-12 opacity-60" />
+              </div>
+            </div>
+            {/* Toggle Knob */}
+            <div
+              className={`relative w-8 h-8 rounded-full transform transition-all duration-500 ${
+                darkMode ? 'translate-x-10 bg-gray-300' : 'translate-x-0 bg-yellow-300'
+              }`}
+            >
+              {/* Moon details */}
+              <div className={`absolute inset-0 transition-opacity duration-500 ${darkMode ? 'opacity-100' : 'opacity-0'}`}>
+                <div className="absolute w-2 h-2 bg-gray-400 rounded-full top-2 left-2" />
+                <div className="absolute w-2 h-2 bg-gray-400 rounded-full top-4 left-4" />
+              </div>
+              {/* Sun rays */}
+              <div className={`absolute inset-0 transition-opacity duration-500 ${darkMode ? 'opacity-0' : 'opacity-100'}`}>
+                {[...Array(8)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute w-1 h-1 bg-yellow-500"
+                    style={{
+                      left: '50%',
+                      top: '50%',
+                      transform: `rotate(${i * 45}deg) translateY(-10px)`,
+                      transformOrigin: '50% 50%',
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
           </button>
         </div>
 
@@ -83,19 +122,57 @@ export default function Header() {
           {/* Theme Toggle Button (Mobile) */}
           <button
             onClick={toggleDarkMode}
-            className="p-2 rounded-full bg-gray-200 dark:bg-gray-700 transition-colors duration-300"
+            className={`relative w-20 h-10 rounded-full p-1 transition-colors duration-500 ${
+              darkMode ? 'bg-gray-700' : 'bg-blue-300'
+            }`}
           >
-            {darkMode ? (
-              <Sun className="w-5 h-5 text-yellow-500" />
-            ) : (
-              <Moon className="w-5 h-5 text-gray-700" />
-            )}
+            {/* Background Elements */}
+            <div className="absolute inset-0 rounded-full overflow-hidden">
+              {/* Stars */}
+              <div className={`absolute inset-0 transition-opacity duration-500 ${darkMode ? 'opacity-100' : 'opacity-0'}`}>
+                <div className="absolute h-1 w-1 bg-white rounded-full top-3 left-4" />
+                <div className="absolute h-1 w-1 bg-white rounded-full top-6 left-8" />
+                <div className="absolute h-1 w-1 bg-white rounded-full top-4 left-12" />
+              </div>
+              {/* Clouds */}
+              <div className={`absolute inset-0 transition-opacity duration-500 ${darkMode ? 'opacity-0' : 'opacity-100'}`}>
+                <div className="absolute h-3 w-8 bg-white rounded-full top-2 left-8 opacity-80" />
+                <div className="absolute h-3 w-6 bg-white rounded-full top-4 left-12 opacity-60" />
+              </div>
+            </div>
+            {/* Toggle Knob */}
+            <div
+              className={`relative w-8 h-8 rounded-full transform transition-all duration-500 ${
+                darkMode ? 'translate-x-10 bg-gray-300' : 'translate-x-0 bg-yellow-300'
+              }`}
+            >
+              {/* Moon details */}
+              <div className={`absolute inset-0 transition-opacity duration-500 ${darkMode ? 'opacity-100' : 'opacity-0'}`}>
+                <div className="absolute w-2 h-2 bg-gray-400 rounded-full top-2 left-2" />
+                <div className="absolute w-2 h-2 bg-gray-400 rounded-full top-4 left-4" />
+              </div>
+              {/* Sun rays */}
+              <div className={`absolute inset-0 transition-opacity duration-500 ${darkMode ? 'opacity-0' : 'opacity-100'}`}>
+                {[...Array(8)].map((_, i) => (
+                  <div
+                    key={i}
+                    className="absolute w-1 h-1 bg-yellow-500"
+                    style={{
+                      left: '50%',
+                      top: '50%',
+                      transform: `rotate(${i * 45}deg) translateY(-10px)`,
+                      transformOrigin: '50% 50%',
+                    }}
+                  />
+                ))}
+              </div>
+            </div>
           </button>
           <button onClick={toggleMenu} className="p-2">
             {isMenuOpen ? (
               <X className="w-6 h-6 dark:text-white" />
             ) : (
-              <Menu className="w-6 h-6 dark:text-white" />
+              <Menu className={`w-6 h-6 ${darkMode ? 'text-white' : 'text-black'}`} />
             )}
           </button>
         </div>

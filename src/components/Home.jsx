@@ -11,6 +11,7 @@ import {
   Triangle,
   Square,
 } from 'lucide-react';
+import Contact from './Contact';
 
 function Home() {
   const { darkMode } = useTheme(); // Access the darkMode state
@@ -35,6 +36,14 @@ function Home() {
         },
       };
     });
+
+    const scrollToSection = (id) => {
+      const section = document.getElementById(id);
+      if (section) {
+        section.scrollIntoView({ behavior: 'smooth' });
+      }
+    };
+    
 
   return (
     <div
@@ -62,7 +71,7 @@ function Home() {
         <div className="text-center mb-12">
           <div className="w-32 h-32 rounded-full overflow-hidden mx-auto mb-6 p-1 bg-gradient-to-r from-blue-500 to-green-500">
             <img
-              src="https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=400&h=400&fit=crop"
+              src="/Profile2.webp"
               alt="Profile"
               className="w-full h-full object-cover rounded-full"
             />
@@ -79,12 +88,10 @@ function Home() {
           {/* Social links */}
           <div className="flex justify-center gap-6 mb-8">
             {[
-              { icon: Github, href: '#github' },
-              { icon: Hexagon, href: '#portfolio' },
-              { icon: MessageCircle, href: '#dev' },
-              { icon: Linkedin, href: '#linkedin' },
-              { icon: Facebook, href: '#facebook' },
-              { icon: Twitter, href: '#twitter' },
+              { icon: Github, href: 'https://github.com/V-M-B' },
+              { icon: Hexagon, href: 'https://vmb-portfolio.netlify.app/' },
+              { icon: Linkedin, href: 'https://www.linkedin.com/in/vmbharadwaj/' },
+
             ].map((social, index) => (
               <a
                 key={index}
@@ -101,6 +108,7 @@ function Home() {
           {/* Contact button */}
           <button
             className="bg-gradient-to-r from-blue-500 to-green-500 text-white px-8 py-3 rounded-full font-semibold hover:opacity-90 transition-opacity duration-300 shadow-lg"
+            onClick={() => scrollToSection('contact')}
           >
             Contact Me
           </button>
