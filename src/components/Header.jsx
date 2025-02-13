@@ -168,18 +168,18 @@ export default function Header() {
               </div>
             </div>
           </button>
-          <button onClick={toggleMenu} className="p-2">
+          {/* <button onClick={toggleMenu} className="p-2">
             {isMenuOpen ? (
               <X className="w-6 h-6 dark:text-white" />
             ) : (
               <Menu className={`w-6 h-6 ${darkMode ? 'text-white' : 'text-black'}`} />
             )}
-          </button>
+          </button> */}
         </div>
       </nav>
 
       {/* Mobile Menu */}
-      <AnimatePresence>
+      {/* <AnimatePresence>
         {isMenuOpen && (
           <motion.div
             initial={{ opacity: 0, height: 0 }}
@@ -206,7 +206,7 @@ export default function Header() {
             </ul>
           </motion.div>
         )}
-      </AnimatePresence>
+      </AnimatePresence> */}
     </header>
   );
 }
