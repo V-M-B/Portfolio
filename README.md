@@ -2,7 +2,7 @@
 
 This repository contains the source code for my personal portfolio website, showcasing my skills, projects, and educational background as a full-stack developer. The website is designed to be a central hub for my professional presence online.
 
-[!(https://portfolio-orpin-six-41.vercel.app/)
+(https://portfolio-orpin-six-41.vercel.app/)
 
 ### [View Live Demo](https://portfolio-orpin-six-41.vercel.app/)
 
@@ -79,9 +79,3 @@ The application will be available at `http://localhost:3000`.
 * Hosting by [Vercel](https://vercel.com/)
 
 ---
-
-## 📧 Contact
-
-Varun M Bharadwaj - [LinkedIn](https://www.linkedin.com/in/varun-m-b-5a02b320a/)
-
-Project Link: [https://github.com/V-M-B/Portfolio](https://github.com/V-M-B/Portfolio
