@@ -1,44 +1,37 @@
 ```markdown
 # Varun M Bharadwaj – Professional Portfolio
 
-Welcome to the official portfolio of Varun M Bharadwaj, a passionate and skilled Software Engineer and full-stack developer based in India. This project showcases Varun’s professional background, featured projects, technical expertise, and educational journey, all presented in a modern and interactive web interface.
+Welcome to the professional portfolio of Varun M Bharadwaj, a passionate full-stack developer and software engineer based in India. This repository and website showcase professional experience, key projects, technical skills, and educational background, all in a modern, interactive interface.
 
 ## Table of Contents
 
-- [About the Portfolio](#about-the-portfolio)
+- [About](#about)
 - [Live Demo](#live-demo)
 - [Features](#features)
 - [Technologies Used](#technologies-used)
 - [Project Structure](#project-structure)
-- [Setup and Installation](#setup-and-installation)
+- [Setup & Installation](#setup--installation)
 - [Contact](#contact)
 - [License](#license)
 
-## About the Portfolio
+## About
 
-This portfolio highlights Varun M Bharadwaj’s professional experience, notable projects, educational credentials, and technical skills. Its goal is to provide employers, collaborators, and recruiters with a clear and visually engaging introduction to Varun’s work and capabilities.
+This portfolio presents an overview of Varun M Bharadwaj’s background as a software engineer, featuring highlighted projects, educational achievements, and expertise in web and backend development. It is intended for recruiters, collaborators, and anyone interested in Varun's work.
 
 ## Live Demo
 
-Explore the portfolio at:  
-**https://portfolio-orpin-six-41.vercel.app/**
+View the portfolio live:  
+**[https://portfolio-orpin-six-41.vercel.app/](https://portfolio-orpin-six-41.vercel.app/)**
 
 ## Features
 
-- **Personal Introduction:**  
-  Clear presentation of Varun’s profile, professional summary, and contact options.
-- **About Me:**  
-  Insight into Varun’s journey as a full-stack developer, educational accomplishments, and approach to problem-solving.
-- **Featured Projects:**  
-  Showcasing highlighted projects including applications like a mental health chatbot, URL shortener, and job portal.
-- **Technical Skills:**  
-  Lists key technologies and frameworks Varun is currently utilizing.
-- **Education History:**  
-  Timeline of academic achievements with degree details.
-- **Modern UI/UX:**  
-  Responsive design, intuitive navigation, and dark mode toggle.
-- **Contact Section:**  
-  Direct communication options and downloadable CV.
+- **Profile Section:** Introduction, professional summary, and quick contact option.
+- **About Me:** Insight into Varun’s journey, education, and philosophy.
+- **Featured Projects:** Showcase of major projects—such as a mental health chatbot, URL shortener, and job portal.
+- **Technical Skills:** Technology stack overview.
+- **Education Timeline:** Degrees and institutions displayed in a clear timeline.
+- **Responsive UI:** Modern, mobile-friendly interface with dark mode support.
+- **Contact Section:** Direct communication form and downloadable CV.
 
 ## Technologies Used
 
@@ -46,15 +39,17 @@ Explore the portfolio at:
   - React  
   - TypeScript  
   - Next.js  
-- **Backend & Database:**  
+- **Backend & Databases:**  
   - Node.js  
   - Express  
   - PostgreSQL  
   - MongoDB  
   - Supabase  
-- **Other:**  
-  - Styled Components/CSS  
-  - Various development and deployment tools
+- **Styling:**  
+  - Styled Components / CSS  
+- **Other Tools:**  
+  - Vercel (Deployment)  
+  - GitHub Actions (CI/CD)
 
 ## Project Structure
 
@@ -71,30 +66,30 @@ Explore the portfolio at:
 └── ...
 ```
 
-- `components/` – UI building blocks (navbar, project cards, timeline, etc.)
-- `pages/` – Main sections: Home, About, Projects, Education, Contact
-- `assets/` – Images, icons, and static resources
+- `components/` – UI blocks such as navbar, project cards, timeline, etc.
+- `pages/` – Main portfolio sections: Home, About, Projects, Education, Contact
+- `assets/` – Static files and icons
 
-## Setup and Installation
+## Setup & Installation
 
-1. **Clone the Repository**
+1. **Clone the Repository:**
    ```
-   git clone https://github.com/username/portfolio.git
-   cd portfolio
+   git clone https://github.com/V-M-B/Portfolio.git
+   cd Portfolio
    ```
 
-2. **Install Dependencies**
+2. **Install Dependencies:**
    ```
    npm install
    ```
 
-3. **Start the Development Server**
+3. **Start the Dev Server:**
    ```
    npm run dev
    ```
-   By default, the app runs on `http://localhost:3000`.
+   Runs at `http://localhost:3000` by default.
 
-4. **Build for Production**
+4. **Build for Production:**
    ```
    npm run build
    npm start
@@ -102,15 +97,18 @@ Explore the portfolio at:
 
 ## Contact
 
-For professional inquiries, collaborations, or feedback, please use the contact form on the portfolio or connect via LinkedIn.
+For professional inquiries or collaboration, please use the contact form on the portfolio or reach out via LinkedIn.
 
 **Varun M Bharadwaj**  
 *Software Engineer*  
-[Portfolio Website](https://portfolio-orpin-six-41.vercel.app/)  
+[Live Portfolio](https://portfolio-orpin-six-41.vercel.app/)  
+[GitHub Repository](https://github.com/V-M-B/Portfolio)
 
 ## License
 
-This project is licensed for educational and demonstration purposes. For commercial or extended use, please contact the owner.
+This project is intended for educational and demonstrative purposes. For other uses, please contact the owner.
 
-**Thank you for visiting the portfolio!**
+*Thank you for visiting the portfolio!*
 ```
+
+[1] https://github.com/V-M-B/Portfolio
