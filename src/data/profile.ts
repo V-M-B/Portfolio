@@ -32,7 +32,7 @@ export const profile = {
     linkedin: "https://www.linkedin.com/in/vmbharadwaj/",
   },
   banner: {
-    ticket: "ORDER #001 KIOSK READY",
+    ticket: "ORDER #001 READY",
   },
   // The cover banner cycles through these, Apple "hello" style.
   // The first one is drawn as a handwritten stroke; the rest are written in.
