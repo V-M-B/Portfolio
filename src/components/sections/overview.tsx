@@ -41,7 +41,6 @@ export function Overview() {
         <li className="flex items-center gap-3">
           <span className="flex size-7 shrink-0 items-center justify-center">
             <span className="relative flex size-2.5">
-              <span className="absolute inline-flex size-full animate-ping rounded-full bg-live opacity-60 motion-reduce:hidden" />
               <span className="relative inline-flex size-2.5 rounded-full bg-live" />
             </span>
           </span>

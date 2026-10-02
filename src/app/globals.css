@@ -180,27 +180,27 @@
   to { stroke-dashoffset: 0; }
 }
 
-/* Stronger shimmer + soft glow for the name */
+/* Name: one calm sweep, then a pause. Letters always stay readable. */
 .shimmer-glow {
-  --shim-base: #18181b;
-  --shim-hi: #a1a1aa;
-  background: linear-gradient(100deg, var(--shim-base) 0 35%, var(--shim-hi) 45%, var(--background) 50%, var(--shim-hi) 55%, var(--shim-base) 65% 100%);
+  --shim-base: #09090b;
+  --shim-hi: #71717a;
+  background: linear-gradient(100deg, var(--shim-base) 0 42%, var(--shim-hi) 50%, var(--shim-base) 58% 100%);
   background-size: 250% 100%;
+  background-position: 100% 0;
   -webkit-background-clip: text;
   background-clip: text;
   color: transparent;
-  animation: shimmer var(--shimmer-duration, 3s) linear infinite, name-glow var(--shimmer-duration, 3s) ease-in-out infinite;
+  animation: name-sweep 6s ease-in-out infinite;
 }
 .dark .shimmer-glow {
-  --shim-base: #a1a1aa;
-  --shim-hi: #e4e4e7;
-  background-image: linear-gradient(100deg, var(--shim-base) 0 35%, var(--shim-hi) 45%, #ffffff 50%, var(--shim-hi) 55%, var(--shim-base) 65% 100%);
+  --shim-base: #e4e4e7;
+  --shim-hi: #ffffff;
 }
-@keyframes name-glow {
-  0%, 100% { filter: drop-shadow(0 0 0 transparent); }
-  50% { filter: drop-shadow(0 0 10px color-mix(in srgb, var(--glow) 55%, transparent)) drop-shadow(0 0 2px color-mix(in srgb, var(--foreground) 35%, transparent)); }
+@keyframes name-sweep {
+  0% { background-position: 100% 0; }
+  35%, 100% { background-position: -150% 0; }
 }
 @media (prefers-reduced-motion: reduce) {
   .hello-draw { animation: none; stroke-dashoffset: 0; }
-  .shimmer-glow { animation: none; background: none; color: var(--foreground); filter: none; }
+  .shimmer-glow { animation: none; background: none; color: var(--foreground); }
 }

@@ -72,8 +72,7 @@ export const profile = {
     footer: {
       github: "GitHub",
       linkedin: "LinkedIn",
-      typeface: "Typeface",
-      typefaceValue: "Geist",
+      email: "Email",
       built: "Built",
       builtValue: "2026, Bengaluru",
     },

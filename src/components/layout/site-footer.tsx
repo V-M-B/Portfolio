@@ -7,7 +7,7 @@ export function SiteFooter() {
   const cells = [
     { label: footer.github, value: isRealLink(github) ? prettyUrl(github) : "—", href: isRealLink(github) ? github : undefined },
     { label: footer.linkedin, value: isRealLink(linkedin) ? prettyUrl(linkedin) : "—", href: isRealLink(linkedin) ? linkedin : undefined },
-    { label: footer.typeface, value: footer.typefaceValue },
+    { label: footer.email, value: profile.email, href: `mailto:${profile.email}` },
     { label: footer.built, value: footer.builtValue },
   ];
 
@@ -24,8 +24,7 @@ export function SiteFooter() {
           {c.href ? (
             <a
               href={c.href}
-              target="_blank"
-              rel="noopener noreferrer"
+              {...(c.href.startsWith("http") && { target: "_blank", rel: "noopener noreferrer" })}
               className="block truncate text-sm underline-offset-4 hover:underline"
             >
               {c.value}

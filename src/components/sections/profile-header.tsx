@@ -54,7 +54,7 @@ export function ProfileHeader() {
           )}
         </div>
         <div className="min-w-0 pt-3">
-          <ShimmerText as="h1" duration={3} glow className="text-[32px] leading-tight font-bold tracking-[-0.025em]">
+          <ShimmerText as="h1" glow className="text-[32px] leading-tight font-bold tracking-[-0.025em]">
             {profile.name}
           </ShimmerText>
           <p className="font-mono text-[13px] text-muted-foreground">{profile.tagline}</p>
