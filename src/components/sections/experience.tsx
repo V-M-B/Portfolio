@@ -1,16 +1,17 @@
 import { ChevronDown } from "lucide-react";
 
 import { Section } from "@/components/layout/section";
+import { LiveDot } from "@/components/effects/live-dot";
 import { YearsBadge } from "@/components/effects/years-badge";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible";
 import { Mark, Tags } from "@/components/sections/tags";
 import { formatMonth, shortRange } from "@/lib/experience";
 import { profile, type Role } from "@/data/profile";
 
-function LiveDot({ label }: { label: string }) {
+function CurrentBadge({ label }: { label: string }) {
   return (
     <span className="inline-flex items-center gap-1.5 font-mono text-xs text-muted-foreground">
-      <span className="size-2 rounded-full bg-live" aria-hidden />
+      <LiveDot className="size-2" />
       {label}
     </span>
   );
@@ -55,7 +56,7 @@ function FullRole({ role }: { role: Role }) {
       <div className="flex items-center gap-3">
         <Mark>{role.mark}</Mark>
         <h3 className="text-[17px] font-semibold">{role.company}</h3>
-        {!role.end && <LiveDot label={profile.labels.current} />}
+        {!role.end && <CurrentBadge label={profile.labels.current} />}
       </div>
       <RoleDetail role={role} className="mt-3" />
     </article>

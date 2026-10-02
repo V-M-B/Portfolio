@@ -1,6 +1,7 @@
 import { BriefcaseBusiness, GraduationCap, Mail, MapPin } from "lucide-react";
 
 import { Section } from "@/components/layout/section";
+import { LiveDot } from "@/components/effects/live-dot";
 import { YearsText } from "@/components/effects/years-badge";
 import { profile } from "@/data/profile";
 
@@ -40,9 +41,7 @@ export function Overview() {
         <Row icon={GraduationCap}>{profile.degreeLine}</Row>
         <li className="flex items-center gap-3">
           <span className="flex size-7 shrink-0 items-center justify-center">
-            <span className="relative flex size-2.5">
-              <span className="relative inline-flex size-2.5 rounded-full bg-live" />
-            </span>
+            <LiveDot />
           </span>
           <span>{profile.openTo}</span>
         </li>

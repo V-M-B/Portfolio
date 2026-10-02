@@ -175,3 +175,25 @@
   .hello-draw { animation: none; stroke-dashoffset: 0; }
   .shimmer-glow { animation: none; background: none; color: var(--foreground); }
 }
+
+/* Live status dot: a double "lub-dub" heartbeat with an expanding ring */
+.live-dot-core {
+  animation: heartbeat 1.6s ease-in-out infinite;
+}
+.live-dot-ring {
+  animation: heartbeat-ring 1.6s cubic-bezier(0, 0, 0.2, 1) infinite;
+}
+@keyframes heartbeat {
+  0%, 40%, 100% { transform: scale(1); }
+  10% { transform: scale(1.3); }
+  20% { transform: scale(1); }
+  30% { transform: scale(1.2); }
+}
+@keyframes heartbeat-ring {
+  0% { transform: scale(1); opacity: 0.6; }
+  60%, 100% { transform: scale(2.6); opacity: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  .live-dot-core, .live-dot-ring { animation: none; }
+  .live-dot-ring { opacity: 0; }
+}
