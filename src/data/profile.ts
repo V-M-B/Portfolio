@@ -83,12 +83,12 @@ export const profile = {
     "Outside work I ship full-stack and mobile side projects, from an AI resume analyzer to cross-platform React Native apps.",
   ],
   stack: [
-    { title: "Languages", icon: "Code", items: ["TypeScript", "JavaScript", "Python", "SQL"] },
-    { title: "Frontend", icon: "Monitor", items: ["React", "Next.js", "React Native", "Expo", "Tailwind CSS", "shadcn/ui"] },
-    { title: "Backend", icon: "Server", items: ["Node.js", "Express", "REST APIs", "JWT auth", "Redis rate limiting"] },
-    { title: "Database", icon: "Database", items: ["PostgreSQL", "Supabase", "Neon", "MongoDB", "Redis", "Appwrite"] },
-    { title: "DevOps", icon: "Container", items: ["Docker", "GitHub Actions", "CI/CD pipelines", "Git", "Linux", "Vercel", "AWS"] },
-    { title: "AI", icon: "Sparkles", items: ["OpenAI API", "OpenRouter", "Vapi AI", "Streamlit", "LangChain"] },
+    { title: "Languages", colors: ["#3b82f6", "#06b6d4"], icon: "Code", items: ["TypeScript", "JavaScript", "Python", "SQL"] },
+    { title: "Frontend", colors: ["#a855f7", "#ec4899"], icon: "Monitor", items: ["React", "Next.js", "React Native", "Expo", "Tailwind CSS", "shadcn/ui"] },
+    { title: "Backend", colors: ["#22c55e", "#a3e635"], icon: "Server", items: ["Node.js", "Express", "REST APIs", "JWT auth", "Redis rate limiting"] },
+    { title: "Database", colors: ["#f59e0b", "#ef4444"], icon: "Database", items: ["PostgreSQL", "Supabase", "Neon", "MongoDB", "Redis", "Appwrite"] },
+    { title: "DevOps", colors: ["#06b6d4", "#6366f1"], icon: "Container", items: ["Docker", "GitHub Actions", "CI/CD pipelines", "Git", "Linux", "Vercel", "AWS"] },
+    { title: "AI", colors: ["#f43f5e", "#f97316"], icon: "Sparkles", items: ["OpenAI API", "OpenRouter", "Vapi AI", "Streamlit", "LangChain"] },
   ],
   experience: [
     {
