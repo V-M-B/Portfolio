@@ -26,7 +26,7 @@ export const profile = {
   // Optional looping portrait clip (e.g. an animated cartoon of you). Drop the file in public/ to enable it.
   avatarVideo: "/avatar.mp4",
   resume: "/Varun_M_Bharadwaj_Resume.pdf",
-  site: "https://portfolio-orpin-six-41.vercel.app",
+  site: "https://vmb.indevs.in",
   socials: {
     github: "https://github.com/V-M-B",
     linkedin: "https://www.linkedin.com/in/vmbharadwaj/",
