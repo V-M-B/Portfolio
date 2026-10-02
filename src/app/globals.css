@@ -1,0 +1,171 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: #ffffff;
+  --foreground: #0a0a0a;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --border: #e4e4e7;
+  --glow: #3b82f6;
+  --live: #16a34a;
+  --shim-base: #0a0a0a;
+  --shim-hi: #a1a1aa;
+  --dot: #d4d4d8;
+}
+
+.dark {
+  --background: #09090b;
+  --foreground: #fafafa;
+  --muted: #18181b;
+  --muted-foreground: #a1a1aa;
+  --border: #27272a;
+  --glow: #60a5fa;
+  --live: #4ade80;
+  --shim-base: #d4d4d8;
+  --shim-hi: #ffffff;
+  --dot: #3f3f46;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-border: var(--border);
+  --color-glow: var(--glow);
+  --color-live: var(--live);
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, monospace;
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 64px;
+    color-scheme: light;
+  }
+  html.dark {
+    color-scheme: dark;
+  }
+  body {
+    background: var(--background);
+    color: var(--foreground);
+    font-size: 15px;
+    line-height: 1.65;
+  }
+  :focus-visible {
+    outline: 2px solid var(--foreground);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+}
+
+/* Diagonal stripe divider between sections */
+.hatch {
+  height: 32px;
+  border-block: 1px solid var(--border);
+  background: repeating-linear-gradient(-45deg, transparent 0 6px, var(--border) 6px 7px);
+}
+
+/* Cover banner dot grid */
+.dot-grid {
+  background-image: radial-gradient(var(--dot) 1px, transparent 1px);
+  background-size: 14px 14px;
+  background-position: 7px 7px;
+}
+
+/* 1. Shimmering text */
+.shimmer {
+  background: linear-gradient(100deg, var(--shim-base) 0 40%, var(--shim-hi) 50%, var(--shim-base) 60% 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: shimmer var(--shimmer-duration, 3.5s) linear infinite;
+}
+@keyframes shimmer {
+  from { background-position: 100% 0; }
+  to { background-position: -150% 0; }
+}
+
+/* 2. Glow cards */
+.glow-card {
+  position: relative;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  isolation: isolate;
+  --x: -500px;
+  --y: -500px;
+}
+.glow-card::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  padding: 1.5px;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(220px circle at var(--x) var(--y), var(--glow), transparent 65%);
+  mask: linear-gradient(#000 0 0) content-box exclude, linear-gradient(#000 0 0);
+}
+.glow-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: -1;
+  border-radius: inherit;
+  pointer-events: none;
+  background: radial-gradient(300px circle at var(--x) var(--y), color-mix(in srgb, var(--glow) 9%, transparent), transparent 60%);
+}
+
+/* 4. Theme toggle: circle blur reveal from the top-left */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-new(root) {
+  animation: reveal 0.75s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes reveal {
+  from { clip-path: circle(0% at 0% 0%); filter: blur(10px); }
+  to { clip-path: circle(150% at 0% 0%); filter: blur(0); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  .shimmer {
+    animation: none;
+    background: none;
+    color: var(--foreground);
+  }
+  ::view-transition-new(root) { animation: none; }
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Collapsible height animation (Radix exposes the measured height) */
+[data-slot="collapsible-content"] {
+  overflow: hidden;
+}
+[data-slot="collapsible-content"][data-state="open"] {
+  animation: collapsible-down 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+[data-slot="collapsible-content"][data-state="closed"] {
+  animation: collapsible-up 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+@keyframes collapsible-down {
+  from { height: 0; opacity: 0; }
+  to { height: var(--radix-collapsible-content-height); opacity: 1; }
+}
+@keyframes collapsible-up {
+  from { height: var(--radix-collapsible-content-height); opacity: 1; }
+  to { height: 0; opacity: 0; }
+}
