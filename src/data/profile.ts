@@ -29,7 +29,7 @@ export const profile = {
   site: "https://portfolio-orpin-six-41.vercel.app",
   socials: {
     github: "https://github.com/V-M-B",
-    linkedin: "TODO https://linkedin.com/in/your-handle",
+    linkedin: "https://www.linkedin.com/in/vmbharadwaj/",
   },
   banner: {
     ticket: "ORDER #001 KIOSK READY",
@@ -107,9 +107,9 @@ export const profile = {
       start: "2025-10", end: "2026-08", compact: true,
       summary: "production support on an enterprise payroll platform",
       points: [
-        "Supported HRMS 2.0, an enterprise HR and payroll platform running in production for client organisations.",
-        "Triaged incoming tickets, reproduced live issues and traced them to the underlying data or code with SQL and PL/SQL queries on Oracle.",
-        "Handed root-cause findings and clear reproduction steps to the backend team, then confirmed fixes with users once they shipped.",
+        "Debugged and resolved production issues on HRMS 2.0 by analysing system behaviour, writing SQL and PL/SQL queries against Oracle payroll databases and tracing application logs.",
+        "Ran root-cause analysis on recurring payroll defects such as salary generation errors and deduction mismatches, and documented findings the backend team used to ship fixes.",
+        "Traced records across payroll tables with PL/SQL to verify calculations and correct inconsistent entries without escalation, keeping structured incident logs that sped up diagnosis of repeat issues.",
       ],
       tags: ["Oracle", "SQL", "PL/SQL", "Production support", "HRMS", "Payroll"],
     },

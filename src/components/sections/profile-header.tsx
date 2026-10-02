@@ -26,7 +26,7 @@ export function ProfileHeader() {
 
       {/* Avatar + name */}
       <div className="flex items-end gap-4 border-b px-5 pb-4">
-        <div className="-mt-12 shrink-0 rounded-full border bg-background p-1 min-[600px]:-mt-14">
+        <div className="relative z-10 -mt-12 shrink-0 rounded-full border bg-background p-1 min-[600px]:-mt-14">
           {hasVideo ? (
             <AvatarVideo
               src={profile.avatarVideo}
