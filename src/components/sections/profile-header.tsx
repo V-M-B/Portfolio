@@ -2,11 +2,14 @@ import fs from "node:fs";
 import path from "node:path";
 import Image from "next/image";
 
+import { AvatarVideo } from "@/components/effects/avatar-video";
 import { HelloWriting } from "@/components/effects/hello-writing";
 import { ShimmerText } from "@/components/effects/shimmer-text";
 import { profile } from "@/data/profile";
 
-const hasAvatar = fs.existsSync(path.join(process.cwd(), "public", profile.avatar));
+const inPublic = (file: string) => fs.existsSync(path.join(process.cwd(), "public", file));
+const hasAvatar = inPublic(profile.avatar);
+const hasVideo = inPublic(profile.avatarVideo);
 
 export function ProfileHeader() {
   return (
@@ -24,7 +27,14 @@ export function ProfileHeader() {
       {/* Avatar + name */}
       <div className="flex items-end gap-4 border-b px-5 pb-4">
         <div className="-mt-12 shrink-0 rounded-full border bg-background p-1 min-[600px]:-mt-14">
-          {hasAvatar ? (
+          {hasVideo ? (
+            <AvatarVideo
+              src={profile.avatarVideo}
+              poster={hasAvatar ? profile.avatar : undefined}
+              label={profile.name}
+              className="size-[92px] rounded-full object-cover min-[600px]:size-[112px]"
+            />
+          ) : hasAvatar ? (
             <Image
               src={profile.avatar}
               alt={profile.name}
@@ -44,7 +54,7 @@ export function ProfileHeader() {
           )}
         </div>
         <div className="min-w-0 pt-3">
-          <ShimmerText as="h1" duration={3.5} className="text-[32px] leading-tight font-bold tracking-[-0.025em]">
+          <ShimmerText as="h1" duration={3} glow className="text-[32px] leading-tight font-bold tracking-[-0.025em]">
             {profile.name}
           </ShimmerText>
           <p className="font-mono text-[13px] text-muted-foreground">{profile.tagline}</p>

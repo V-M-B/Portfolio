@@ -10,7 +10,6 @@ export type Role = {
   points?: readonly string[];
   tags?: readonly string[];
   summary?: string;
-  detail?: string;
 };
 
 export const profile = {
@@ -24,6 +23,8 @@ export const profile = {
   degreeLine: "MCA, CGPA 8.62",
   openTo: "Open to SWE roles",
   avatar: "/avatar.jpg",
+  // Optional looping portrait clip (e.g. an animated cartoon of you). Drop the file in public/ to enable it.
+  avatarVideo: "/avatar.mp4",
   resume: "/Varun_M_Bharadwaj_Resume.pdf",
   site: "https://portfolio-orpin-six-41.vercel.app",
   socials: {
@@ -106,11 +107,17 @@ export const profile = {
       company: "Epic Minds", mark: "EM", role: "L1 Support Specialist", type: "Full-time",
       start: "2025-10", end: "2026-08", compact: true,
       summary: "production support on an enterprise payroll platform",
-      detail: "L1 Support Specialist on HRMS 2.0. Debugged live issues with SQL and PL/SQL on Oracle and handed root-cause findings to the backend team.",
+      points: [
+        "Supported HRMS 2.0, an enterprise HR and payroll platform running in production for client organisations.",
+        "Triaged incoming tickets, reproduced live issues and traced them to the underlying data or code with SQL and PL/SQL queries on Oracle.",
+        "Handed root-cause findings and clear reproduction steps to the backend team, then confirmed fixes with users once they shipped.",
+      ],
+      tags: ["Oracle", "SQL", "PL/SQL", "Production support", "HRMS", "Payroll"],
     },
     {
       company: "Danush Systems & Solutions", mark: "DS", role: "Frontend Developer Intern", type: "Internship",
-      start: "2024-12", end: "2025-02", compact: false,
+      start: "2024-12", end: "2025-02", compact: true,
+      summary: "frontend internship on marketing landing pages",
       points: [
         "Designed and shipped responsive landing pages in HTML, CSS and JavaScript that improved lead conversion across campaigns.",
         "Analyzed web traffic and user behavior in Zoho Analytics and wrote weekly insight reports that guided the marketing team's A/B tests.",

@@ -16,9 +16,40 @@ function LiveDot({ label }: { label: string }) {
   );
 }
 
-function FullRole({ role }: { role: Role }) {
+/** Role title, meta line, bullets and chips, indented under the company row. */
+function RoleDetail({ role, className = "" }: { role: Role; className?: string }) {
   const dates = `${formatMonth(role.start)} – ${role.end ? formatMonth(role.end) : profile.labels.present}`;
   const meta = [role.type, dates, role.location].filter(Boolean);
+  return (
+    <div className={`ml-3.5 space-y-3 border-l pl-6 ${className}`}>
+      <div>
+        <h4 className="font-medium">{role.role}</h4>
+        <p className="flex flex-wrap gap-x-2 font-mono text-xs text-muted-foreground">
+          {meta.map((m, i) => (
+            <span key={m}>
+              {i > 0 && (
+                <span aria-hidden className="mr-2">
+                  ·
+                </span>
+              )}
+              {m}
+            </span>
+          ))}
+        </p>
+      </div>
+      {role.points && (
+        <ul className="list-disc space-y-1.5 pl-4 marker:text-muted-foreground">
+          {role.points.map((p) => (
+            <li key={p}>{p}</li>
+          ))}
+        </ul>
+      )}
+      {role.tags && <Tags items={role.tags} />}
+    </div>
+  );
+}
+
+function FullRole({ role }: { role: Role }) {
   return (
     <article className="px-5 py-5">
       <div className="flex items-center gap-3">
@@ -26,31 +57,7 @@ function FullRole({ role }: { role: Role }) {
         <h3 className="text-[17px] font-semibold">{role.company}</h3>
         {!role.end && <LiveDot label={profile.labels.current} />}
       </div>
-      <div className="mt-3 ml-3.5 space-y-3 border-l pl-6">
-        <div>
-          <h4 className="font-medium">{role.role}</h4>
-          <p className="flex flex-wrap gap-x-2 font-mono text-xs text-muted-foreground">
-            {meta.map((m, i) => (
-              <span key={m}>
-                {i > 0 && (
-                  <span aria-hidden className="mr-2">
-                    ·
-                  </span>
-                )}
-                {m}
-              </span>
-            ))}
-          </p>
-        </div>
-        {role.points && (
-          <ul className="list-disc space-y-1.5 pl-4 marker:text-muted-foreground">
-            {role.points.map((p) => (
-              <li key={p}>{p}</li>
-            ))}
-          </ul>
-        )}
-        {role.tags && <Tags items={role.tags} />}
-      </div>
+      <RoleDetail role={role} className="mt-3" />
     </article>
   );
 }
@@ -71,7 +78,7 @@ function CompactRole({ role }: { role: Role }) {
         />
       </CollapsibleTrigger>
       <CollapsibleContent>
-        <p className="mt-2 ml-3.5 border-l pl-6 text-sm text-muted-foreground">{role.detail}</p>
+        <RoleDetail role={role} className="mt-3 mb-2" />
       </CollapsibleContent>
     </Collapsible>
   );

@@ -17,9 +17,10 @@ const HELLO_PATH =
   "C368 106 384 110 400 104";
 
 const EASE = [0.45, 0.1, 0.3, 1] as const;
-const DRAW = 2.8; // seconds to draw the English stroke
-const WRITE = 1.4; // seconds to write in the other greetings
-const HOLD = 1.8; // seconds each greeting stays fully written
+const DRAW = 2.2; // seconds to draw the English stroke (matches .hello-draw in globals.css)
+const WRITE = 1.1; // seconds to write in the other greetings
+const HOLD = 1.6; // seconds each greeting stays fully written
+const FADE = 0.35; // crossfade between greetings
 
 const FONT_BY_SCRIPT: Record<Greeting["script"], string> = {
   latin: "var(--font-script), cursive",
@@ -28,19 +29,19 @@ const FONT_BY_SCRIPT: Record<Greeting["script"], string> = {
   japanese: '"Hiragino Maru Gothic ProN", "Yu Gothic UI", "Yu Gothic", "Meiryo", sans-serif',
 };
 
-function HelloStroke({ animate, delay }: { animate: boolean; delay: number }) {
+/** Drawn by CSS (.hello-draw) so it starts on first paint, before React hydrates. */
+function HelloStroke() {
   return (
     <svg viewBox="0 0 420 180" className="h-full w-auto" aria-hidden="true">
-      <motion.path
+      <path
+        className="hello-draw"
         d={HELLO_PATH}
+        pathLength={1}
         fill="none"
         stroke="currentColor"
         strokeWidth={13}
         strokeLinecap="round"
         strokeLinejoin="round"
-        initial={animate ? { pathLength: 0 } : false}
-        animate={{ pathLength: 1 }}
-        transition={{ duration: DRAW, ease: EASE, delay }}
       />
     </svg>
   );
@@ -56,8 +57,8 @@ function WrittenGreeting({ greeting }: { greeting: Greeting }) {
           : "block whitespace-nowrap px-3 py-6 text-[40px] leading-none font-bold sm:text-[54px]"
       }
       style={{ fontFamily: FONT_BY_SCRIPT[greeting.script] }}
-      initial={{ clipPath: "inset(0 100% 0 0)", filter: "blur(4px)" }}
-      animate={{ clipPath: "inset(0 0% 0 0)", filter: "blur(0px)" }}
+      initial={{ clipPath: "inset(0 100% 0 0)" }}
+      animate={{ clipPath: "inset(0 0% 0 0)" }}
       transition={{ duration: WRITE, ease: EASE }}
     >
       {greeting.text}
@@ -70,18 +71,13 @@ export function HelloWriting() {
   const reduce = useReducedMotion();
   const greetings = profile.greetings;
   const [index, setIndex] = useState(0);
-  const [cycled, setCycled] = useState(false);
 
   useEffect(() => {
     if (reduce) return;
-    const firstDelay = !cycled && index === 0 ? 0.3 : 0;
-    const showFor = (index === 0 ? DRAW + firstDelay : WRITE) + HOLD;
-    const t = window.setTimeout(() => {
-      setIndex((i) => (i + 1) % greetings.length);
-      setCycled(true);
-    }, showFor * 1000);
+    const showFor = (index === 0 ? DRAW : WRITE) + HOLD;
+    const t = window.setTimeout(() => setIndex((i) => (i + 1) % greetings.length), showFor * 1000);
     return () => window.clearTimeout(t);
-  }, [index, cycled, reduce, greetings.length]);
+  }, [index, reduce, greetings.length]);
 
   const current = reduce ? greetings[0] : greetings[index];
 
@@ -89,19 +85,16 @@ export function HelloWriting() {
     <div
       role="img"
       aria-label={greetings[0].text}
-      className="pointer-events-none flex h-[84px] items-center min-[600px]:h-[100px] justify-center text-foreground select-none"
+      className="pointer-events-none relative h-[84px] text-foreground select-none min-[600px]:h-[100px]"
     >
-      <AnimatePresence mode="wait" initial={false}>
+      <AnimatePresence initial={false}>
         <motion.div
           key={current.text}
-          className="flex h-full items-center justify-center"
-          exit={{ opacity: 0, filter: "blur(6px)", transition: { duration: 0.45 } }}
+          className="absolute inset-0 flex items-center justify-center"
+          initial={{ opacity: 1 }}
+          exit={{ opacity: 0, transition: { duration: FADE } }}
         >
-          {current.lang === "en" ? (
-            <HelloStroke animate={!reduce} delay={cycled ? 0 : 0.3} />
-          ) : (
-            <WrittenGreeting greeting={current} />
-          )}
+          {current.lang === "en" ? <HelloStroke /> : <WrittenGreeting greeting={current} />}
         </motion.div>
       </AnimatePresence>
     </div>
